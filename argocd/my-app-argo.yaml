@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-repo.git
-    targetRevision: HEAD
-    path: gitops-repo
+    repoURL: https://github.com/yogeshhome/my-hosting-server.git
+    targetRevision: main
+    path: k3s/app1
   destination:
     server: https://kubernetes.default.svc
-    namespace: production
+    namespace: app1
   syncPolicy:
     automated:
       prune: true
@@ -25,13 +25,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-repo.git
-    targetRevision: HEAD
-    path: gitops-repo
+    repoURL: https://github.com/yogeshhome/my-hosting-server.git
+    targetRevision: main
+    path: k3s/app1
   destination:
     server: https://kubernetes.default.svc
-    namespace: production
+    namespace: app1
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
