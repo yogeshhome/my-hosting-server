@@ -39,7 +39,7 @@ spec:
         livenessProbe:
           exec:
             command:
-            - mongosh
+            - mongo
             - --username
             - root
             - --password
@@ -55,7 +55,7 @@ spec:
         readinessProbe:
           exec:
             command:
-            - mongosh
+            - mongo
             - --username
             - root
             - --password
