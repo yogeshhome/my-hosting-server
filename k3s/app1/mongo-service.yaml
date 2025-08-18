@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app1-mongo
-  namespace: production
+  namespace: app1
 spec:
   selector:
     app: app1-mongo

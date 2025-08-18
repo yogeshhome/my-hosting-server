@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: app1-mongo
-  namespace: production
+  namespace: app1
 spec:
   serviceName: app1-mongo
   replicas: 1
