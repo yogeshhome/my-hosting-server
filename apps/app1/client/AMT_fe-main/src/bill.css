@@ -1,0 +1,255 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 6fr; /* Sidebar and main content */
+  height: 100vh; /* Full height of the screen */
+}
+
+.bill-form-container {
+  max-width: 1000px; /* Remove any max-width constraint */
+  margin: 10%; /* Remove the margin to allow the form to take full width */
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Align items within the form */
+  flex-grow: 2; /* Make it grow to take all available space */
+}
+
+.bill-form-container h2 {
+  margin-bottom: 20px;
+}
+
+.bill-form-container .alert {
+  margin-bottom: 20px;
+}
+
+.bill-form-container .item-card {
+  margin-bottom: 10px;
+}
+
+h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+h4 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.item-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.item-card .form-row {
+  align-items: center;
+}
+
+.item-card .form-group {
+  margin-bottom: 15px;
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button.btn-danger {
+  background-color: #dc3545;
+}
+
+button.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Styling for error message */
+.alert {
+  margin-top: 20px;
+}
+
+.alert-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+form .form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.form-control[readonly] {
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+}
+
+/* Responsive Adjustments for Mobile */
+
+/* Medium Screens <= 768px */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Full-width grid layout */
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  .bill-form-container {
+    margin: 5% 5%; /* Adjust margins for mobile view */
+    padding: 15px;
+    box-shadow: none; /* Remove box-shadow on mobile for a cleaner look */
+  }
+
+  .bill-form-container h2 {
+    font-size: 1.25rem; /* Slightly smaller heading */
+    margin-bottom: 15px;
+  }
+
+  .bill-form-container .item-card {
+    margin-bottom: 10px;
+  }
+
+  .item-card .form-group {
+    margin-bottom: 10px; /* Reduce space between form fields */
+  }
+
+  .form-control {
+    padding: 8px; /* Slightly smaller padding for mobile */
+    font-size: 14px; /* Smaller text size for better fit */
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Reducing padding on form controls in mobile */
+  .form-control {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Ensuring the form inputs and button stretch across */
+  .form-control, button {
+    width: 100%;
+  }
+}
+
+/* Small Screens <= 480px */
+@media (max-width: 480px) {
+  .bill-form-container {
+    margin: 5% 2%; /* Smaller margins for very small screens */
+  }
+
+  .form-control {
+    padding: 8px; /* Keep consistent small padding */
+    font-size: 12px; /* Further reduce font size */
+  }
+
+  button {
+    padding: 8px; /* Reduce button padding on very small screens */
+    font-size: 12px;
+  }
+
+  /* Item Card Responsiveness */
+  .item-card {
+    padding: 10px;
+  }
+
+  .item-card .form-group {
+    margin-bottom: 5px; /* More compact spacing on smaller devices */
+  }
+}
+
+
+
+/* asset.jsx */
+
+/* Admin.css */
+
+/* Mobile View Styles */
+.mobile-view {
+  display: none;
+}
+
+.asset-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.asset-info {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.asset-info strong {
+  font-weight: bold;
+}
+
+.asset-actions {
+  margin-top: 10px;
+}
+
+.asset-actions button {
+  margin-right: 10px;
+}
+
+/* Show card view on mobile */
+@media (max-width: 768px) {
+  .desktop-table {
+      display: none; /* Hide table in mobile view */
+  }
+
+  .mobile-view {
+      display: block; /* Show cards in mobile view */
+  }
+}
+
+/* Table responsiveness */
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  /* Mobile adjustments for table hiding */
+  .table-responsive {
+      display: none;
+  }
+}

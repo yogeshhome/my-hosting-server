@@ -1,0 +1,18 @@
+tunnel: replace your id
+credentials-file: //your path
+ingress:
+  - hostname: kasthurihostel.org
+    service: http://localhost:8080 
+    originRequest:
+      # noTLSVerify: false (remove or set false for production)
+      connectTimeout: 10s        
+      tlsTimeout: 10s            
+
+  - hostname: api.kasthurihostel.org
+    service: http://localhost:3001  # Use HTTPS for origin
+    originRequest:
+      # noTLSVerify: false (remove or set false for production)
+      connectTimeout: 10s
+      tlsTimeout: 10s
+
+  - service: http_status:404

@@ -1,0 +1,71 @@
+.loginWrapper {
+    margin-top: 150px;
+    margin-left: 60px;
+    width: 35%;
+    display: inline-block;
+}
+
+.loginHeader {
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.button {
+    width: 100%;
+}
+
+img {
+    
+    margin: auto;
+    width: 50%;
+    height: auto;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 1024px) {
+    .loginWrapper {
+        width: 50%;
+        margin-left: 30px;
+    }
+
+    img {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .loginWrapper {
+        width: 100%;
+        margin-top: 30px;
+        margin-left: 0;
+    }
+
+    img {
+        content: url('assets/assets5.jpg');
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .loginWrapper {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        
+    }
+
+    .button {
+        width: 100%;
+        font-size: 16px;
+    }
+}
