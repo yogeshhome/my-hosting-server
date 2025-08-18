@@ -4,6 +4,7 @@ metadata:
   name: app1-mongo
   namespace: app1
 spec:
+  clusterIP: None
   selector:
     app: app1-mongo
   ports:
