@@ -19,7 +19,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Build & Push Client
       - name: Build and push client image
         run: |
           docker build -f apps/app1/Dockerfile.client -t yogeshhome/app1:client-${{ github.sha }} ./apps/app1
@@ -27,7 +26,6 @@ jobs:
           docker push yogeshhome/app1:client-${{ github.sha }}
           docker push yogeshhome/app1:client-latest
 
-      # Build & Push Server
       - name: Build and push server image
         run: |
           docker build -f apps/app1/Dockerfile.server -t yogeshhome/app1:server-${{ github.sha }} ./apps/app1
