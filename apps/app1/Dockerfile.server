@@ -3,13 +3,13 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy only server package.json and lock file
-COPY apps/app1/server/AMT_be-main/package*.json ./
+COPY server/AMT_be-main/package*.json ./
 
-# Install dependencies
+# Install dependencies (production only)
 RUN npm install --production
 
 # Copy the rest of the server code
-COPY apps/app1/server/AMT_be-main ./
+COPY server/AMT_be-main ./
 
 EXPOSE 3001
 
