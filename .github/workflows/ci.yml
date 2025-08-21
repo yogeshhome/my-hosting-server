@@ -5,7 +5,11 @@ on:
     branches:
       - main
   pull_request:
-  workflow_dispatch:   
+    
+
+permissions:
+  contents: read
+  packages: write   # ✅ Needed for pushing to GHCR
 
 jobs:
   build:
