@@ -4,11 +4,12 @@ on:
   push:
     branches:
       - main
-  pull_request: {}   # ✅ Fixed: triggers on all PRs
+  pull_request: {}   # triggers on all PRs
+  
 
 permissions:
   contents: read
-  packages: write   # ✅ Needed for pushing to GHCR
+  packages: write   # needed for pushing to GHCR
 
 jobs:
   build:
@@ -22,7 +23,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_PAT }}   # ✅ Use PAT stored in secrets
 
       - name: Build and push client image
         run: |
