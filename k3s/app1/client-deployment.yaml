@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app1-client
-  namespace: app1
+  namespace: production
 spec:
   replicas: 2
   selector:
@@ -21,7 +21,7 @@ spec:
 
       initContainers:
         - name: fix-nginx-perms
-          image: ghcr.io/yogeshhome/app1-client:latest
+          image: ghcr.io/yogeshhome/app1-client:007be6a3c323fab21298c524c825fd7b26a6857f
           command:
             - sh
             - -c
@@ -38,7 +38,7 @@ spec:
 
       containers:
         - name: app1-client
-          image: ghcr.io/yogeshhome/app1-client:latest
+          image: ghcr.io/yogeshhome/app1-client:007be6a3c323fab21298c524c825fd7b26a6857f
           ports:
             - containerPort: 80
           volumeMounts:
@@ -48,23 +48,11 @@ spec:
               mountPath: /var/cache/nginx
           resources:
             requests:
-              cpu: "500m"
-              memory: "1Gi"
+              cpu: "500m"     
+              memory: "1Gi"    
             limits:
-              cpu: "500m"
-              memory: "1Gi"
+              cpu: "500m"     
+              memory: "1Gi"    
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: app1-client
-  namespace: app1
-spec:
-  selector:
-    app: app1-client
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: ClusterIP
+      imagePullSecrets:
+        - name: ghcr-secret

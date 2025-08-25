@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: app1-mongo
-  namespace: app1
+  namespace: production
 spec:
   serviceName: app1-mongo
   replicas: 1
@@ -24,50 +24,9 @@ spec:
           value: "root"
         - name: MONGO_INITDB_ROOT_PASSWORD
           value: "Kskarthik21"
-        - name: MONGO_INITDB_DATABASE
-          value: "Inventary"
         volumeMounts:
         - name: mongo-data
           mountPath: /data/db
-        resources:
-          requests:
-            cpu: "500m"
-            memory: "1Gi"
-          limits:
-            cpu: "1"
-            memory: "2Gi"
-        livenessProbe:
-          exec:
-            command:
-            - mongo
-            - --username
-            - root
-            - --password
-            - Kskarthik21
-            - --authenticationDatabase
-            - admin
-            - --eval
-            - "db.adminCommand('ping')"
-          initialDelaySeconds: 40
-          periodSeconds: 15
-          timeoutSeconds: 5
-          failureThreshold: 6
-        readinessProbe:
-          exec:
-            command:
-            - mongo
-            - --username
-            - root
-            - --password
-            - Kskarthik21
-            - --authenticationDatabase
-            - admin
-            - --eval
-            - "db.adminCommand('ping')"
-          initialDelaySeconds: 20
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 6
   volumeClaimTemplates:
   - metadata:
       name: mongo-data
