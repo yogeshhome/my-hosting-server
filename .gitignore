@@ -1,0 +1,38 @@
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Node / npm (if you have any frontend code)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python (if used anywhere)
+__pycache__/
+*.pyc
+
+# Archives / binaries
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.7z
+*.rar
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Compiled / Executables
+*.out
+*.o
+*.a
+*.log
+*.pid
+
+# Custom (your current large files)
+argocd-linux-amd64
+my-hosting-server.zip
