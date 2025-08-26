@@ -1,7 +1,4 @@
-prometheus:
-  prometheusSpec:
-    retention: 7d
-    resources:
-      requests:
-        memory: "512Mi"
-        cpu: "250m"
+# Default values for Prometheus stack
+grafana:
+  adminUser: admin
+  adminPassword: admin123
