@@ -1,0 +1,5 @@
+grafana:
+  adminPassword: "prodpass"
+prometheus:
+  prometheusSpec:
+    retention: 15d

@@ -1,0 +1,5 @@
+grafana:
+  adminPassword: "devpass"
+prometheus:
+  prometheusSpec:
+    retention: 2d

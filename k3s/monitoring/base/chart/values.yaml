@@ -1,4 +1,11 @@
-# Default values for Prometheus stack
+# Minimal defaults; overrides are in overlays/*/values-*.yaml
+prometheus:
+  prometheusSpec:
+    retention: 7d
+
 grafana:
+  enabled: true
   adminUser: admin
-  adminPassword: admin123
+
+alertmanager:
+  enabled: true
