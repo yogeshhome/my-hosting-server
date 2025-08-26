@@ -8,10 +8,11 @@ spec:
   source:
     repoURL: https://github.com/yogeshhome/my-hosting-server.git
     targetRevision: main
-    path: k3s/monitoring/base/chart   # 👈 vendored chart location
+    path: k3s/monitoring/base/chart
     helm:
       valueFiles:
-        - ../../overlays/dev/prometheus-values-dev.yaml  # 👈 dev values
+        - values.yaml
+        - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

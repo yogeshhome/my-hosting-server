@@ -1,10 +1,10 @@
 prometheus:
   prometheusSpec:
-    retention: 1d   # keep metrics for 1 day
+    retention: 15d
     storageSpec:
       volumeClaimTemplate:
         spec:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 1Gi   # small PVC, saves space
+              storage: 10Gi
