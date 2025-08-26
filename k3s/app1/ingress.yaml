@@ -2,22 +2,26 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app1-ingress
-  namespace: app1
+  namespace: production
   annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
   rules:
-    - http:
+    - host: kasthurihostel.org
+      http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: app1-client
                 port:
                   number: 80
+    - host: api.kasthurihostel.org
+      http:
+        paths:
           - path: /api
             pathType: Prefix
             backend:

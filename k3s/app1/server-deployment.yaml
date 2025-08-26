@@ -22,27 +22,28 @@ spec:
             - configMapRef:
                 name: app1-config
             - secretRef:
-                name: app1-secrets
+                name: server-secret   # ✅ corrected secret name
           resources:
             requests:
-              cpu: "1000m"     # 1 core guaranteed
-              memory: "2Gi"    # 2 GB RAM guaranteed
+              cpu: "250m"       # reduced to 0.25 core
+              memory: "512Mi"   # reduced to 0.5 GB RAM
             limits:
-              cpu: "1500m"     # max 1.5 cores
-              memory: "3Gi"    # max 3 GB RAM
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 3001
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            failureThreshold: 3
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 3001
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            failureThreshold: 3
+              cpu: "500m"       # max 0.5 core
+              memory: "1Gi"     # max 1 GB RAM
+          # Probes disabled until /health endpoint exists
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: 3001
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 10
+          #   failureThreshold: 3
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: 3001
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10
+          #   failureThreshold: 3
       imagePullSecrets:
         - name: ghcr-secret
