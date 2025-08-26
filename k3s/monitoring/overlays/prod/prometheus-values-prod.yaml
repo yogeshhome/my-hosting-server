@@ -1,10 +1,17 @@
 prometheus:
   prometheusSpec:
-    retention: 7d
+    retention: 7d   # keep metrics for 7 days (adjust as needed)
     storageSpec:
       volumeClaimTemplate:
         spec:
-          accessModes: ["ReadWriteOnce"]
+          accessModes: ["ReadWriteOnce"]   # or ["ReadWriteMany"] if multi-node storage is available
           resources:
             requests:
-              storage: 10Gi
+              storage: 20Gi   # more space for longer retention
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+      limits:
+        memory: "2Gi"
+        cpu: "1"

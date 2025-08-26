@@ -3,18 +3,27 @@ kind: Application
 metadata:
   name: monitoring-prod
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: CreateNamespace=true
 spec:
   project: default
-  source:
-    repoURL: https://github.com/yogeshhome/my-hosting-server.git
-    targetRevision: main
-    path: k3s/monitoring/overlays/prod
-    helm:
-      valueFiles:
-        - prometheus-values-prod.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
+  sources:
+    # 1. Helm chart source (from Prometheus community repo)
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      targetRevision: 55.5.0   # stable version
+      helm:
+        valueFiles:
+          - $values/k3s/monitoring/overlays/prod/prometheus-values-prod.yaml
+
+    # 2. Values source (your repo)
+    - repoURL: https://github.com/yogeshhome/my-hosting-server.git
+      targetRevision: main
+      ref: values
+
   syncPolicy:
     automated:
       prune: true
