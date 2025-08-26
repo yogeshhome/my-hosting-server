@@ -5,14 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/yogeshhome/my-hosting-server.git
-    targetRevision: main
-    path: k3s/monitoring/base/chart
-    helm:
-      valueFiles:
-        - values.yaml
-        - values-dev.yaml
+  # 👇 Use multi-sources so Helm can read values outside the chart dir
+  sources:
+    - repoURL: https://github.com/yogeshhome/my-hosting-server.git
+      targetRevision: main
+      path: k3s/monitoring/base/chart
+      helm:
+        valueFiles:
+          - $values/k3s/monitoring/overlays/dev/prometheus-values-dev.yaml
+    - repoURL: https://github.com/yogeshhome/my-hosting-server.git
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -20,3 +23,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,11 @@
+# Dev overrides
+prometheus:
+  prometheusSpec:
+    retention: 1d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 1Gi
