@@ -6,12 +6,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/yogeshhome/my-hosting-server.git
-    targetRevision: main
-    path: k3s/monitoring/base/chart
+    repoURL: https://prometheus-community.github.io/helm-charts
+    chart: kube-prometheus-stack
+    targetRevision: 65.3.0   # stable version as of Aug 2025
     helm:
-      valueFiles:
-        - ../../overlays/dev/values-dev.yaml
+      values: |
+        grafana:
+          enabled: false
+        alertmanager:
+          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -19,5 +22,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
